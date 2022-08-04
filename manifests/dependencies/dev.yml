@@ -4,6 +4,9 @@ mysql:
   enabled: true
   values:
     primary:
+      image:
+        repository: zcube/bitnami-compat/mysql
+        tag: 8.0.30-debian-11-r19
       persistence:
         enabled: false
 
@@ -11,11 +14,18 @@ postgres:
   enabled: true
   values:
     primary:
+      image:
+        repository: zcube/bitnami-compat/postgresql
+        tag: 14.4.0-debian-11-r19
       persistence:
         enabled: false
 
 redis:
   enabled: true
+  values:
+    image:
+      repository: zcube/bitnami-compat/redis
+      tag: 7.0.4-debian-11-r19
 
 nats:
   enabled: true
@@ -30,5 +40,8 @@ etcd:
 rabbitmq:
   enabled: true
   values:
+    image:
+      repository: zcube/bitnami-compat/rabbitmq
+      tag: 3.10.6-debian-11-r19
     persistence:
       enabled: false
