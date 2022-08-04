@@ -1,12 +1,9 @@
 #@data/values
 ---
 mysql:
-  enabled: false
+  enabled: true
   values:
     primary:
-      nodeSelector:
-        - name: ff/arch 
-          value: amd64
       persistence:
         enabled: false
 
@@ -14,19 +11,11 @@ postgres:
   enabled: true
   values:
     primary:
-      nodeSelector:
-        - name: ff/arch 
-          value: amd64
       persistence:
         enabled: false
 
 redis:
   enabled: true
-  values:
-    master:
-      nodeSelector:
-        - name: ff/arch 
-          value: amd64
 
 nats:
   enabled: true
@@ -37,16 +26,9 @@ nats:
 
 etcd:
   enabled: true
-  values:
-    nodeSelector:
-      - name: ff/arch 
-        value: amd64
 
 rabbitmq:
   enabled: true
   values:
-    nodeSelector:
-      - name: ff/arch 
-        value: amd64
     persistence:
       enabled: false
