@@ -1,0 +1,118 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ff-svc-moleculer-dev
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ff-svc-moleculer-dev
+  name: svc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      pipe/selector: ff-svc-moleculer.svc
+  template:
+    metadata:
+      labels:
+        pipe/selector: ff-svc-moleculer.svc
+    spec:
+      restartPolicy: Always
+      volumes:
+        - name: local-dir
+          hostPath:
+            path: /app
+            type: DirectoryOrCreate
+      containers:
+        - name: svc
+          image: node:17-alpine
+          imagePullPolicy: IfNotPresent
+          workingDir: /app
+          command:
+            - npm
+            - start
+          resources: {}
+          volumeMounts:
+            - name: local-dir
+              mountPath: /app
+          env:
+            - name: MYSQL_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: dep-secret-mysql
+                  key: connection-string
+            - name: POSTGRES_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: dep-secret-postgres
+                  key: connection-string
+            - name: RABBITMQ_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: dep-secret-rabbitmq
+                  key: connection-string
+            - name: REDIS_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: dep-secret-redis
+                  key: connection-string
+            - name: NATS_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: dep-secret-nats
+                  key: connection-string
+            - name: ETCD_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: dep-secret-etcd
+                  key: connection-string
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ff-svc-moleculer-dev
+  name: local-svc
+spec:
+  type: NodePort
+  selector:
+    pipe/selector: ff-svc-moleculer.svc
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ff-svc-moleculer-dev
+  name: local-rabbitmq
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/instance: dep-rabbitmq
+    app.kubernetes.io/name: rabbitmq
+  ports:
+    - name: http-stats
+      protocol: TCP
+      port: 15672
+      targetPort: stats
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   namespace: ff-svc-moleculer-dev
+#   name: local-rabbitmq
+# spec:
+#   type: NodePort
+#   selector:
+#     app.kubernetes.io/name: rabbitmq
+#     app.kubernetes.io/instance: dep-rabbitmq
+#   ports:
+#   - name: http
+#     protocol: TCP
+#     port: 25672
+#     targetPort: 25672

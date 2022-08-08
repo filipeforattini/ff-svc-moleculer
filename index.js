@@ -1,6 +1,5 @@
-const App = require('./src/app')
+const App = require("./src/app");
 
 const config = require("./moleculer.config");
 
-App(config)
-  .start()
+App(config).start();

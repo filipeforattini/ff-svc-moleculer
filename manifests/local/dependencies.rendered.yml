@@ -1,0 +1,313 @@
+dependencies: mysql,postgres,rabbitmq,redis,nats,etcd
+dependenciesAsJson: '["mysql","postgres","rabbitmq","redis","nats","etcd"]'
+mysql:
+  enabled: true
+  control:
+    hash: 1aeea2fc8c6c2f46443c32c4de91b7082d3051209e05839c86767d440e0d2973
+    config: eyJjaGFydCI6ImJpdG5hbWkvbXlzcWwiLCJlbmFibGVkIjp0cnVlLCJ2YWx1ZXMiOnsiYXJjaGl0ZWN0dXJlIjoic3RhbmRhbG9uZSIsImF1dGgiOnsiZGF0YWJhc2UiOiJzdmMiLCJ1c2VybmFtZSI6InN2YyJ9LCJpbWFnZSI6eyJkZWJ1ZyI6ZmFsc2UsInB1bGxQb2xpY3kiOiJJZk5vdFByZXNlbnQiLCJyZWdpc3RyeSI6ImRvY2tlci5pbyIsInJlcG9zaXRvcnkiOiJiaXRuYW1pL215c3FsIiwidGFnIjoiOC4wLjMwLWRlYmlhbi0xMS1yMyJ9LCJtZXRyaWNzIjp7ImVuYWJsZWQiOmZhbHNlLCJleHRyYUVudlZhcnMiOltdfSwicHJpbWFyeSI6eyJleHRyYUVudlZhcnMiOltdLCJleHRyYUZsYWdzIjoiLS1pbm5vZGItZG91Ymxld3JpdGU9T0ZGIiwibm9kZVNlbGVjdG9yIjpbXSwicGVyc2lzdGVuY2UiOnsiZW5hYmxlZCI6ZmFsc2UsInNpemUiOiIyR2kiLCJzdG9yYWdlQ2xhc3MiOiIifSwicmVzb3VyY2VzIjp7ImxpbWl0cyI6W10sInJlcXVlc3RzIjpbXX19fSwidmVyc2lvbiI6IjkuMi40In0=
+    version: 9.2.4
+    chart: bitnami/mysql
+    secrets:
+    - auth.existingSecret
+    secretKeys:
+    - mysql-password
+    - mysql-root-password
+    - mysql-replication-password
+    connection:
+      protocol: mysql://
+      port: 3306
+      serviceName: dep-mysql
+      username: ff-svc-moleculer-dev
+      database: /ff-svc-moleculer-dev
+      secret: mysql-password
+  values:
+    architecture: standalone
+    auth:
+      database: ff-svc-moleculer-dev
+      username: ff-svc-moleculer-dev
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/mysql
+      tag: 8.0.30-debian-11-r3
+    metrics:
+      enabled: false
+      extraEnvVars: []
+    primary:
+      nodeSelector: {}
+      extraEnvVars: []
+      extraFlags: --innodb-doublewrite=OFF
+      persistence:
+        enabled: false
+        size: 2Gi
+        storageClass: ""
+      resources:
+        limits: {}
+        requests: {}
+postgres:
+  enabled: true
+  control:
+    hash: 29b8f64c7959b7b45f58a3b36432b47acc6ee594b7373185f41793df49765eef
+    config: eyJjaGFydCI6ImJpdG5hbWkvcG9zdGdyZXNxbCIsImVuYWJsZWQiOnRydWUsInZhbHVlcyI6eyJhcmNoaXRlY3R1cmUiOiJzdGFuZGFsb25lIiwiYXV0aCI6eyJkYXRhYmFzZSI6InN2YyIsInVzZXJuYW1lIjoic3ZjIn0sImltYWdlIjp7ImRlYnVnIjpmYWxzZSwicHVsbFBvbGljeSI6IklmTm90UHJlc2VudCIsInJlZ2lzdHJ5IjoiZG9ja2VyLmlvIiwicmVwb3NpdG9yeSI6ImJpdG5hbWkvcG9zdGdyZXNxbCIsInRhZyI6IjE0LjQuMC1kZWJpYW4tMTEtcjIwIn0sIm1ldHJpY3MiOnsiZW5hYmxlZCI6ZmFsc2UsImV4dHJhRW52VmFycyI6W119LCJwcmltYXJ5Ijp7ImV4dHJhRW52VmFycyI6W10sIm5vZGVTZWxlY3RvciI6W10sInBlcnNpc3RlbmNlIjp7ImVuYWJsZWQiOmZhbHNlLCJzaXplIjoiMkdpIiwic3RvcmFnZUNsYXNzIjoiIn0sInJlc291cmNlcyI6eyJsaW1pdHMiOltdLCJyZXF1ZXN0cyI6W119fX0sInZlcnNpb24iOiIxMS42LjIzIn0=
+    version: 11.6.23
+    chart: bitnami/postgresql
+    secrets:
+    - global.postgresql.auth.existingSecret
+    secretKeys:
+    - password
+    - postgres-password
+    - replication-password
+    connection:
+      protocol: postgresql://
+      port: 5432
+      serviceName: dep-postgres-postgresql
+      username: ff-svc-moleculer-dev
+      database: /ff-svc-moleculer-dev
+      secret: password
+  values:
+    architecture: standalone
+    auth:
+      database: ff-svc-moleculer-dev
+      username: ff-svc-moleculer-dev
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/postgresql
+      tag: 14.4.0-debian-11-r20
+    metrics:
+      enabled: false
+      extraEnvVars: []
+    primary:
+      nodeSelector: {}
+      extraEnvVars: []
+      persistence:
+        enabled: false
+        size: 2Gi
+        storageClass: ""
+      resources:
+        limits: {}
+        requests: {}
+rabbitmq:
+  enabled: true
+  control:
+    hash: 9f2d0af2727ecda0e80fc1235fd0af56550a98c2a9a100fd9615e0bea52f2cf7
+    config: eyJjaGFydCI6ImJpdG5hbWkvcmFiYml0bXEiLCJlbmFibGVkIjp0cnVlLCJ2YWx1ZXMiOnsiYXV0aCI6eyJ1c2VybmFtZSI6InN2YyJ9LCJjbHVzdGVyaW5nIjp7ImVuYWJsZWQiOmZhbHNlfSwiZXh0cmFFbnZWYXJzIjpbXSwiaW1hZ2UiOnsiZGVidWciOmZhbHNlLCJwdWxsUG9saWN5IjoiSWZOb3RQcmVzZW50IiwicmVnaXN0cnkiOiJkb2NrZXIuaW8iLCJyZXBvc2l0b3J5IjoiYml0bmFtaS9yYWJiaXRtcSIsInRhZyI6IjMuMTAuNi1kZWJpYW4tMTEtcjUifSwiaW5ncmVzcyI6eyJlbmFibGVkIjpmYWxzZX0sIm1ldHJpY3MiOnsiZW5hYmxlZCI6ZmFsc2V9LCJub2RlU2VsZWN0b3IiOltdLCJwZXJzaXN0ZW5jZSI6eyJlbmFibGVkIjpmYWxzZSwic2l6ZSI6IjJHaSIsInN0b3JhZ2VDbGFzcyI6IiJ9LCJyZXNvdXJjZXMiOnsibGltaXRzIjpbXSwicmVxdWVzdHMiOltdfSwic2VydmljZUFjY291bnQiOnsiY3JlYXRlIjpmYWxzZX19LCJ2ZXJzaW9uIjoiMTAuMS4xNiJ9
+    version: 10.1.16
+    chart: bitnami/rabbitmq
+    secrets:
+    - auth.existingPasswordSecret
+    - auth.existingErlangSecret
+    secretKeys:
+    - rabbitmq-password
+    - rabbitmq-erlang-cookie
+    connection:
+      protocol: amqp://
+      port: 5672
+      serviceName: dep-rabbitmq
+      username: ff-svc-moleculer-dev
+      database: ""
+      secret: rabbitmq-password
+  values:
+    auth:
+      username: ff-svc-moleculer-dev
+    clustering:
+      enabled: false
+    extraEnvVars: []
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/rabbitmq
+      tag: 3.10.6-debian-11-r5
+    ingress:
+      enabled: false
+    metrics:
+      enabled: false
+    nodeSelector: {}
+    persistence:
+      enabled: false
+      size: 2Gi
+      storageClass: ""
+    resources:
+      limits: {}
+      requests: {}
+    serviceAccount:
+      create: false
+elasticsearch:
+  enabled: false
+  control:
+    hash: 5d11fd654c5130329fe92e4fa20126d5d04f5ad70e5609911e8d230587ef0fed
+    config: eyJjaGFydCI6ImJpdG5hbWkvZWxhc3RpY3NlYXJjaCIsImVuYWJsZWQiOmZhbHNlLCJ2YWx1ZXMiOnsiY29vcmRpbmF0aW5nIjp7Im5vZGVTZWxlY3RvciI6W10sInJlcGxpY2FDb3VudCI6MSwicmVzb3VyY2VzIjp7ImxpbWl0cyI6W10sInJlcXVlc3RzIjpbXX19LCJjdXJhdG9yIjp7ImVuYWJsZWQiOmZhbHNlLCJub2RlU2VsZWN0b3IiOltdLCJyZXBsaWNhQ291bnQiOjEsInJlc291cmNlcyI6eyJsaW1pdHMiOltdLCJyZXF1ZXN0cyI6W119fSwiZGF0YSI6eyJub2RlU2VsZWN0b3IiOltdLCJwZXJzaXN0ZW5jZSI6eyJlbmFibGVkIjp0cnVlLCJzaXplIjoiMkdpIiwic3RvcmFnZUNsYXNzIjoiIn0sInJlcGxpY2FDb3VudCI6MSwicmVzb3VyY2VzIjp7ImxpbWl0cyI6W10sInJlcXVlc3RzIjpbXX19LCJleHRyYUVudlZhcnMiOltdLCJpbWFnZSI6eyJkZWJ1ZyI6ZmFsc2UsInB1bGxQb2xpY3kiOiJJZk5vdFByZXNlbnQiLCJyZWdpc3RyeSI6ImRvY2tlci5pbyIsInJlcG9zaXRvcnkiOiJiaXRuYW1pL2VsYXN0aWNzZWFyY2giLCJ0YWciOiI4LjMuMy1kZWJpYW4tMTEtcjEifSwiaW5nZXN0Ijp7Im5vZGVTZWxlY3RvciI6W10sInJlcGxpY2FDb3VudCI6MSwicmVzb3VyY2VzIjp7ImxpbWl0cyI6W10sInJlcXVlc3RzIjpbXX19LCJpbmdyZXNzIjp7ImVuYWJsZWQiOmZhbHNlfSwibWFzdGVyIjp7Im5vZGVTZWxlY3RvciI6W10sInBlcnNpc3RlbmNlIjp7ImVuYWJsZWQiOnRydWUsInNpemUiOiIyR2kiLCJzdG9yYWdlQ2xhc3MiOiIifSwicmVwbGljYUNvdW50IjoxLCJyZXNvdXJjZXMiOnsibGltaXRzIjpbXSwicmVxdWVzdHMiOltdfX0sIm1ldHJpY3MiOnsiZW5hYmxlZCI6ZmFsc2V9fSwidmVyc2lvbiI6IjE5LjEuNSJ9
+    version: 19.1.5
+    chart: bitnami/elasticsearch
+    secrets: []
+    secretKeys: []
+    connection:
+      protocol: ""
+      port: 9200
+      serviceName: dep-elasticsearch
+      username: ""
+      database: ""
+      secret: ""
+  values:
+    coordinating:
+      nodeSelector: {}
+      replicaCount: 1
+      resources:
+        limits: {}
+        requests: {}
+    curator:
+      enabled: false
+      nodeSelector: {}
+      replicaCount: 1
+      resources:
+        limits: {}
+        requests: {}
+    data:
+      nodeSelector: {}
+      persistence:
+        enabled: true
+        size: 2Gi
+        storageClass: ""
+      replicaCount: 1
+      resources:
+        limits: {}
+        requests: {}
+    extraEnvVars: []
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/elasticsearch
+      tag: 8.3.3-debian-11-r1
+    ingest:
+      nodeSelector: {}
+      replicaCount: 1
+      resources:
+        limits: {}
+        requests: {}
+    ingress:
+      enabled: false
+    metrics:
+      enabled: false
+    master:
+      nodeSelector: {}
+      replicaCount: 1
+      persistence:
+        enabled: true
+        size: 2Gi
+        storageClass: ""
+      resources:
+        limits: {}
+        requests: {}
+redis:
+  enabled: true
+  control:
+    hash: d99a0dcae7566b56bb02b73bf367f8dbc8937892cff6d52b2071bd5e6933f2aa
+    config: eyJjaGFydCI6ImJpdG5hbWkvcmVkaXMiLCJlbmFibGVkIjp0cnVlLCJ2YWx1ZXMiOnsiYXJjaGl0ZWN0dXJlIjoic3RhbmRhbG9uZSIsImF1dGgiOnsiZW5hYmxlZCI6ZmFsc2V9LCJleHRyYUVudlZhcnMiOltdLCJpbWFnZSI6eyJkZWJ1ZyI6ZmFsc2UsInB1bGxQb2xpY3kiOiJJZk5vdFByZXNlbnQiLCJyZWdpc3RyeSI6ImRvY2tlci5pbyIsInJlcG9zaXRvcnkiOiJiaXRuYW1pL3JlZGlzIiwidGFnIjoiNy4wLjQtZGViaWFuLTExLXI3In0sImluZ3Jlc3MiOnsiZW5hYmxlZCI6ZmFsc2V9LCJtYXN0ZXIiOnsibm9kZVNlbGVjdG9yIjpbXSwicGVyc2lzdGVuY2UiOnsiZW5hYmxlZCI6ZmFsc2UsInNpemUiOiIyR2kiLCJzdG9yYWdlQ2xhc3MiOiIifSwicmVzb3VyY2VzIjp7ImxpbWl0cyI6W10sInJlcXVlc3RzIjpbXX19LCJtZXRyaWNzIjp7ImVuYWJsZWQiOmZhbHNlfX0sInZlcnNpb24iOiIxNi4xMy4yIn0=
+    version: 16.13.2
+    chart: bitnami/redis
+    secrets: []
+    secretKeys: []
+    connection:
+      protocol: redis://
+      port: 6379
+      serviceName: dep-redis-master
+      username: ""
+      database: ""
+      secret: ""
+  values:
+    architecture: standalone
+    auth:
+      enabled: false
+    extraEnvVars: []
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/redis
+      tag: 7.0.4-debian-11-r7
+    ingress:
+      enabled: false
+    metrics:
+      enabled: false
+    master:
+      nodeSelector: {}
+      persistence:
+        enabled: false
+        size: 2Gi
+        storageClass: ""
+      resources:
+        limits: {}
+        requests: {}
+nats:
+  enabled: true
+  control:
+    hash: b74c3c2628772213df4d174023e9b274f4c799a0a5092e45df40575444686e0e
+    config: eyJjaGFydCI6ImJpdG5hbWkvbmF0cyIsImVuYWJsZWQiOnRydWUsInZhbHVlcyI6eyJhdXRoIjp7ImVuYWJsZWQiOmZhbHNlfSwiZXh0cmFFbnZWYXJzIjpbXSwiaW1hZ2UiOnsiZGVidWciOmZhbHNlLCJwdWxsUG9saWN5IjoiSWZOb3RQcmVzZW50IiwicmVnaXN0cnkiOiJkb2NrZXIuaW8iLCJyZXBvc2l0b3J5IjoiYml0bmFtaS9uYXRzIiwidGFnIjoiMi44LjQtZGViaWFuLTExLXIyNCJ9LCJtZXRyaWNzIjp7ImVuYWJsZWQiOmZhbHNlfSwibm9kZVNlbGVjdG9yIjpbXSwicmVzb3VyY2VzIjp7ImxpbWl0cyI6W10sInJlcXVlc3RzIjpbXX19LCJ2ZXJzaW9uIjoiNy4zLjkifQ==
+    version: 7.3.9
+    chart: bitnami/nats
+    secrets: []
+    secretKeys: []
+    connection:
+      protocol: nats://
+      port: 4222
+      serviceName: dep-nats
+      username: ""
+      database: ""
+      secret: ""
+  values:
+    auth:
+      enabled: false
+    nodeSelector: {}
+    extraEnvVars: []
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/nats
+      tag: 2.8.4-debian-11-r24
+    metrics:
+      enabled: false
+    resources:
+      limits: {}
+      requests: {}
+etcd:
+  enabled: true
+  control:
+    hash: 1e29b2b8839b067634fab0a235e3af3a82be22f31b81c3857c3bac6ed71f99d0
+    config: eyJjaGFydCI6ImJpdG5hbWkvZXRjZCIsImVuYWJsZWQiOnRydWUsInZhbHVlcyI6eyJhdXRoIjp7InJiYWMiOnsiY3JlYXRlIjpmYWxzZX19LCJleHRyYUVudlZhcnMiOltdLCJpbWFnZSI6eyJkZWJ1ZyI6ZmFsc2UsInB1bGxQb2xpY3kiOiJJZk5vdFByZXNlbnQiLCJyZWdpc3RyeSI6ImRvY2tlci5pbyIsInJlcG9zaXRvcnkiOiJiaXRuYW1pL2V0Y2QiLCJ0YWciOiIzLjUuNC1kZWJpYW4tMTEtcjIxIn0sIm1ldHJpY3MiOnsiZW5hYmxlZCI6ZmFsc2V9LCJub2RlU2VsZWN0b3IiOltdLCJwZXJzaXN0ZW5jZSI6eyJlbmFibGVkIjpmYWxzZSwic2l6ZSI6IjJHaSIsInN0b3JhZ2VDbGFzcyI6IiJ9LCJyZXNvdXJjZXMiOnsibGltaXRzIjpbXSwicmVxdWVzdHMiOltdfX0sInZlcnNpb24iOiI4LjMuNiJ9
+    version: 8.3.6
+    chart: bitnami/etcd
+    secrets: []
+    secretKeys: []
+    connection:
+      protocol: etcd3://
+      port: 2379
+      serviceName: dep-etcd
+      username: ""
+      database: ""
+      secret: ""
+  values:
+    auth:
+      rbac:
+        create: false
+    extraEnvVars: []
+    image:
+      debug: false
+      pullPolicy: IfNotPresent
+      registry: docker.io
+      repository: bitnami/etcd
+      tag: 3.5.4-debian-11-r21
+    metrics:
+      enabled: false
+    nodeSelector: {}
+    persistence:
+      enabled: false
+      size: 2Gi
+      storageClass: ""
+    resources:
+      limits: {}
+      requests: {}
