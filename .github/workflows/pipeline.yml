@@ -11,10 +11,10 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Main branch'
+        description: 'Environment'
         required: true
-        default: 'dev'
         type: choice
+        default: 'dev'
         options:
         - dev
         - stg
