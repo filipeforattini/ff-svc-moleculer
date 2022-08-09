@@ -1,3 +1,10 @@
+## [1.6.73](https://github.com/filipeforattini/ff-svc-moleculer/compare/v1.6.72...v1.6.73) (2022-08-09)
+
+
+### Bug Fixes
+
+* empty commit for testing ([b81afdf](https://github.com/filipeforattini/ff-svc-moleculer/commit/b81afdffe890c50d10169936b55a3583e5da7fbb))
+
 ## [1.6.72](https://github.com/filipeforattini/ff-svc-moleculer/compare/v1.6.71...v1.6.72) (2022-08-09)
 
 
