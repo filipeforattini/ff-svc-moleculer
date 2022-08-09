@@ -8,6 +8,20 @@ on:
   pull_request:
     types: [opened, reopened]
 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Main branch'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+        - dev
+        - stg
+        - prd
+        - sbx
+        - dry
+
 jobs:
 
   SVC:
