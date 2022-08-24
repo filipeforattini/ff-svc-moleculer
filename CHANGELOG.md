@@ -1,3 +1,22 @@
+## [1.6.100](https://github.com/filipeforattini/ff-svc-moleculer/compare/v1.6.99...v1.6.100) (2022-08-24)
+
+
+### Bug Fixes
+
+* empty commit for testing ([d188db3](https://github.com/filipeforattini/ff-svc-moleculer/commit/d188db3f48a53b3ca4d1bdb5b7232223316fa655))
+* empty commit for testing ([4099ada](https://github.com/filipeforattini/ff-svc-moleculer/commit/4099ada48f8a0f1294620d87e615981cd00ffd7d))
+* empty commit for testing ([ba1aa9a](https://github.com/filipeforattini/ff-svc-moleculer/commit/ba1aa9ae34e2ece163a7256f2b0e2ab9bae7de78))
+* empty commit for testing ([48a1b0e](https://github.com/filipeforattini/ff-svc-moleculer/commit/48a1b0ea082a3f94130d50776fef1069101c5322))
+* empty commit for testing ([84130d0](https://github.com/filipeforattini/ff-svc-moleculer/commit/84130d0f7aea4cf3d7afb6e336e6ee2368732118))
+* empty commit for testing ([8d24433](https://github.com/filipeforattini/ff-svc-moleculer/commit/8d244332261c439ebdccd5703e25d965bbee2239))
+* empty commit for testing ([c2b60fb](https://github.com/filipeforattini/ff-svc-moleculer/commit/c2b60fb9887f8c129cb3a5f44a8825b24ef8ca09))
+* empty commit for testing ([9e7cc83](https://github.com/filipeforattini/ff-svc-moleculer/commit/9e7cc836f2d764cdda67f37232a5fee176073bfc))
+* empty commit for testing ([d00538c](https://github.com/filipeforattini/ff-svc-moleculer/commit/d00538c791b7f5c222f2009dd16106930f68ef9d))
+* empty commit for testing ([a08ba8d](https://github.com/filipeforattini/ff-svc-moleculer/commit/a08ba8d368aa86447ea370ac312fad80eb0fac77))
+* empty commit for testing ([d5cfffb](https://github.com/filipeforattini/ff-svc-moleculer/commit/d5cfffb5e97b3a7f7f5f82d57bd319b427c68407))
+* empty commit for testing ([826bd98](https://github.com/filipeforattini/ff-svc-moleculer/commit/826bd9888dc5d16d0a1a60bb9884335d8e2399db))
+* empty commit for testing ([82a20a7](https://github.com/filipeforattini/ff-svc-moleculer/commit/82a20a7e2f83cfbd448191ad5b00da9cb5cf4e60))
+
 ## [1.6.99](https://github.com/filipeforattini/ff-svc-moleculer/compare/v1.6.98...v1.6.99) (2022-08-17)
 
 
