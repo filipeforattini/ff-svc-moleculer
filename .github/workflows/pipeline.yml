@@ -17,15 +17,11 @@ on:
         default: 'dev'
         options:
         - dev
-        - stg
-        - prd
-        - sbx
-        - dry
 
 jobs:
 
   SVC:
-    uses: filipeforattini/ff-iac-github-actions/.github/workflows/svc.yml@main
+    uses: forattini-dev/ff-iac-github-actions/.github/workflows/svc.yml@main
     secrets: inherit
     with:
       mainBranch: main

@@ -3,7 +3,7 @@ const ApiService = require("moleculer-web");
 const { PORT = "8080" } = process.env;
 
 module.exports = {
-  name: "status",
+  name: "api",
   mixins: [ApiService],
 
   settings: {
@@ -14,24 +14,14 @@ module.exports = {
       origin: "*",
     },
 
-    assets: {
-      folder: "public",
-    },
-
     routes: [
       {
-        path: "/swagger.json",
-        aliases: {
-          "GET /": "swagger.openapi",
-        },
-      },
-      {
         autoAliases: true,
-        whitelist: ["**"],
         path: "/",
         aliases: {
-          "REST /pageviews": "pageviews",
-          "REST /leads": "leads",
+          "REST /hooks": "hooks",
+          "REST /optins": "optins",
+          "GET /beef/hooks": "beef.hooks",
         },
       },
     ],

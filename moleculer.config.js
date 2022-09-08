@@ -1,33 +1,31 @@
-const RabbitMQ = require("./src/middlewares/rabbitmq.middleware");
+const { Middleware: Channels } = require("@moleculer/channels");
 
 const {
-  // generic config
-  MOLECULER_CACHER,
-  MOLECULER_TRANSPORTER,
-  MOLECULER_REGISTRY,
-
-  // specific config
   REDIS_CONNECTION_STRING,
-  NATS_CONNECTION_STRING,
-  ETCD_CONNECTION_STRING,
-
-  RABBITMQ_CONNECTION_STRING,
-  RABBITMQ_PREFETCH = "3",
 } = process.env;
 
 module.exports = {
-  hotReload: true,
-  cacher: REDIS_CONNECTION_STRING || MOLECULER_CACHER,
-  transporter: NATS_CONNECTION_STRING || MOLECULER_TRANSPORTER,
+  cacher: REDIS_CONNECTION_STRING,
+  transporter: REDIS_CONNECTION_STRING,
+  
+  tracking: {
+    enabled: true,
+  },
+
+  tracing: {
+      enabled: true,
+      exporter: "Console",
+      events: true,
+      stackTrace: true
+  },
 
   registry: {
-    discoverer: ETCD_CONNECTION_STRING || MOLECULER_REGISTRY,
+    discoverer: REDIS_CONNECTION_STRING,
   },
 
   middlewares: [
-    RabbitMQ({
-      uri: RABBITMQ_CONNECTION_STRING,
-      prefetch: parseInt(RABBITMQ_PREFETCH),
+    Channels({
+      adapter: REDIS_CONNECTION_STRING,
     }),
   ],
 };

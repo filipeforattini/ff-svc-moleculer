@@ -1,19 +1,21 @@
 const { ServiceBroker } = require("moleculer");
 
 const api = require("./services/api.service");
-const openapi = require("./services/swagger.service");
-const leads = require("./services/leads.service");
-const status = require("./services/status.service");
-const cleaner = require("./services/cleaner.service");
-const generator = require("./services/generator.service");
-const pageviews = require("./services/pageviews.service");
+const beef = require("./services/beef.service");
+const auth0 = require("./services/auth0.service");
+const hooks = require("./services/hooks.service");
+const optins = require("./services/optins.service");
 
 module.exports = (config) => {
   const broker = new ServiceBroker(config);
 
-  [api, openapi, leads, status, cleaner, generator, pageviews].map((svc) =>
-    broker.createService(svc)
-  );
+  [
+    api,
+    beef,
+    auth0,
+    hooks,
+    optins,
+  ].map((svc) => broker.createService(svc));
 
   return broker;
 };

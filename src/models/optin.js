@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = {
-  name: "leads",
+  name: "optins",
 
   options: {
     paranoid: true,
@@ -9,7 +9,13 @@ module.exports = {
 
   define: {
     ip: {
-      type: DataTypes.STRING(32),
+      type: DataTypes.STRING(16),
+      allowNull: true,
+    },
+
+    // importante
+    cpf: {
+      type: DataTypes.STRING(11),
       allowNull: false,
     },
     name: {
@@ -20,24 +26,22 @@ module.exports = {
       type: DataTypes.STRING(64),
       allowNull: false,
     },
-    mobile: {
-      type: DataTypes.STRING(32),
+    signedAt: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
-    country: {
+
+    // complementar
+    nickname: {
       type: DataTypes.STRING(64),
       allowNull: false,
     },
-    state: {
-      type: DataTypes.STRING(32),
+    picture: {
+      type: DataTypes.STRING(1024),
       allowNull: false,
     },
-    city: {
-      type: DataTypes.STRING(64),
-      allowNull: false,
-    },
-    address: {
-      type: DataTypes.STRING(256),
+    rawUser: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },

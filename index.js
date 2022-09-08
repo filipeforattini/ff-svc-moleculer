@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const App = require("./src/app");
 
 const config = require("./moleculer.config");

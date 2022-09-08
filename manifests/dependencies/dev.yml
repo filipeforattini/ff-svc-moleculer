@@ -11,17 +11,6 @@ mysql:
       persistence:
         enabled: false
 
-postgres:
-  enabled: true
-  values:
-    image:
-      registry: ghcr.io
-      repository: zcube/bitnami-compat/postgresql
-      tag: 14.4.0-debian-11-r19
-    primary:
-      persistence:
-        enabled: false
-
 redis:
   enabled: true
   values:
@@ -29,23 +18,3 @@ redis:
       registry: ghcr.io
       repository: zcube/bitnami-compat/redis
       tag: 7.0.4-debian-11-r19
-
-nats:
-  enabled: true
-  values:
-    nodeSelector:
-      - name: kubernetes.io/arch
-        value: amd64
-
-etcd:
-  enabled: true
-
-rabbitmq:
-  enabled: true
-  values:
-    image:
-      registry: ghcr.io
-      repository: zcube/bitnami-compat/rabbitmq
-      tag: 3.10.6-debian-11-r19
-    persistence:
-      enabled: false

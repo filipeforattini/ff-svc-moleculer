@@ -2,6 +2,9 @@
 ---
 port: 8080
 
+deployment:
+  replicas: 2
+
 env:
   - name: PORT
     value: "8080"
