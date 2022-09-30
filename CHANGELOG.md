@@ -1,3 +1,10 @@
+## [1.6.125](https://github.com/filipeforattini/ff-svc-moleculer/compare/v1.6.124...v1.6.125) (2022-09-30)
+
+
+### Bug Fixes
+
+* rabbitmq middleware mas retries ([073ff66](https://github.com/filipeforattini/ff-svc-moleculer/commit/073ff660583883911ed0858d1557b96fcd12dc52))
+
 ## [1.6.124](https://github.com/filipeforattini/ff-svc-moleculer/compare/v1.6.123...v1.6.124) (2022-09-29)
 
 
