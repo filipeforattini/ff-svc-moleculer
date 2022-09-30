@@ -60,7 +60,7 @@ const connectionLoop = ({ uri, logger = console, maxTries = 10} = {}) => {
 
     const loop = setInterval(async () => {
       try {
-        logger.info(`try #${tries}`);
+        logger.info(`trying to connect into AMQP (${tries}/${maxTries})`);
         connection = await connect()
         clearInterval(loop)
         resolve(connection)
@@ -69,7 +69,7 @@ const connectionLoop = ({ uri, logger = console, maxTries = 10} = {}) => {
       }
 
       tries++
-      if (tries < maxTries) {
+      if (tries > maxTries) {
         clearInterval(loop)
         reject(new Error('reached the maximum of retries'))
       }
@@ -78,18 +78,27 @@ const connectionLoop = ({ uri, logger = console, maxTries = 10} = {}) => {
 }
 
 module.exports = (options = {}) => {
-  const { autoAck = true, uri = "amqp://localhost", prefetch = 3 } = options;
   let myBroker = null;
+  
+  const { 
+    autoAck = true, 
+    uri = "amqp://localhost", 
+    prefetch = 3 
+  } = options;
 
   return {
-    async created(broker) {
+    async starting (broker) {
       myBroker = broker;
 
-      this.logger.info("Connecting to AMQP server...");
-      broker.amqpConnection = await connectionLoop(uri);
-
-      addConnectionEvents(broker.amqpConnection, this.logger);
-      this.logger.info("AMQP is connected.");
+      if (broker.amqpConnection) {
+        await broker.amqpConnection
+      } else {
+        this.logger.info("Connecting to AMQP server...");
+        broker.amqpConnection = await connectionLoop({ uri, logger: this.logger });
+  
+        addConnectionEvents(broker.amqpConnection, this.logger);
+        this.logger.info("AMQP is connected.");
+      }
 
       this.logger.debug(`Creating AMQP channel...`);
       broker.amqpChannel = await broker.amqpConnection.createChannel();
@@ -104,14 +113,15 @@ module.exports = (options = {}) => {
         myBroker.amqpChannel.assertExchange(exchange, "fanout", {
           durable: true,
         });
+
         myBroker.amqpChannel.publish(exchange, routingKey, content);
       };
     },
 
-    async serviceStarted(service) {
-      const amqpEvents = Object.keys(service.events).filter((event) =>
-        event.startsWith("amqp://")
-      );
+    async serviceStarted (service) {
+      if (myBroker.amqpConnection) await myBroker.amqpConnection
+      
+      const amqpEvents = Object.keys(service.events).filter((event) => event.startsWith("amqp://"));
 
       if (amqpEvents.length === 0) return service;
 
@@ -120,10 +130,12 @@ module.exports = (options = {}) => {
       // create exchanges
       await Promise.all(
         amqpEvents
-          .map((event) => decoupleNames(event).exchange)
-          .map((exchange) =>
-            myBroker.amqpChannel.assertExchange(exchange, "fanout")
-          )
+          .map((event) => {
+            const {exchange} = decoupleNames(event)
+            this.logger.info(`exchange found [${exchange}] from [${event}]!`)
+            return exchange
+          })
+          .map((exchange) => myBroker.amqpChannel.assertExchange(exchange, "fanout"))
       );
 
       // create queues

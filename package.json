@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js --trace-warnings",
+    "dev": "nodemon index.js",
     "commit": "git pull && git commit --allow-empty -am \"fix: empty commit for testing\" && git push",
     "commit-with-pipe": "cd ../ff-iac-github-actions; npm run commit && cd ../ff-svc-moleculer; npm run commit",
     "local": "MOLECULER_CACHER=redis://localhost:6379 MOLECULER_REGISTRY=etcd3://localhost:2379 MOLECULER_CHANNEL=redis://localhost:6379 MOLECULER_TRANSPORTER=nats://localhost:4222 MYSQL_CONNECTION_STRING=mysql://ff-svc-moleculer:secret@localhost:3306/ff-svc-moleculer POSTGRES_CONNECTION_STRING=postgresql://ff-svc-moleculer:secret@localhost:5432/ff-svc-moleculer node index.js --trace-warnings"
@@ -38,5 +39,8 @@
     "pg-hstore": "^2.3.4",
     "redlock": "^4.2.0",
     "sequelize": "^6.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
