@@ -24,7 +24,7 @@
     "@moleculer/channels": "^0.1.2",
     "amqplib": "^0.10.0",
     "cron": "^2.0.0",
-    "dayjs": "^1.11.3",
+    "dayjs": "^1.11.7",
     "etcd3": "^1.1.0",
     "fakerator": "^0.3.5",
     "ioredis": "^4.27.9",
