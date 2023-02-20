@@ -1038,10 +1038,10 @@ moleculer-swagger@^0.1.0-beta2:
   resolved "https://registry.yarnpkg.com/moleculer-swagger/-/moleculer-swagger-0.1.0-beta2.tgz#a9a3ece6b417f9ce27d222ddd116ed928e5a40f0"
   integrity sha512-OfrDTl22anU7g1KbgZFzZx7I9oH8yRHrJ6+x7PVUb/H9KlwvQ2VK2OpN+/LiR/RZkyS4BUTW4hPQ31HriVrEhA==
 
-moleculer-web@^0.10.4:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/moleculer-web/-/moleculer-web-0.10.4.tgz#43029575b4546fd54fd888cf39a205c13cc3dab8"
-  integrity sha512-WU5jZRoH53D3Cx2eBPFPlY5+7RI4teb5nlupRZO0N9vkRblGIFm4ySahZxBN4xVXvFSF5EWt/j1BdQr5rBocVw==
+moleculer-web@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/moleculer-web/-/moleculer-web-0.10.5.tgz#76be7bf8f7200aff45c6ca61bb96feba6f412b44"
+  integrity sha512-b4LFl67ESo8tmYtfuu91r8nRyLV158URAbf21dsNvf4hiVJW0u0BFwkkQF7Bn1Y+KRYCnAXNjGt4B+q5+cKnIw==
   dependencies:
     "@fastify/busboy" "^1.0.0"
     body-parser "^1.19.0"
