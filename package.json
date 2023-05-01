@@ -26,7 +26,7 @@
     "cron": "^2.0.0",
     "dayjs": "^1.11.3",
     "etcd3": "^1.1.0",
-    "fakerator": "^0.3.5",
+    "fakerator": "^0.3.6",
     "ioredis": "^4.27.9",
     "moleculer": "^0.14.21",
     "moleculer-db": "^0.8.18",
