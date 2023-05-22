@@ -1023,10 +1023,10 @@ moleculer-db-adapter-sequelize@^0.2.14:
   dependencies:
     bluebird "^3.7.2"
 
-moleculer-db@^0.8.18:
-  version "0.8.18"
-  resolved "https://registry.yarnpkg.com/moleculer-db/-/moleculer-db-0.8.18.tgz#9725564f6c4bc0ed46254720807fdedc2307384f"
-  integrity sha512-IkwRATFKcvkCikdb25f3oz5/Ya0808nPT9J7Ftjh1GNkvR2McRJo09cct29aeqCvpDXdQa3BOFsYSlldOmsXhA==
+moleculer-db@^0.8.23:
+  version "0.8.23"
+  resolved "https://registry.yarnpkg.com/moleculer-db/-/moleculer-db-0.8.23.tgz#f38aa4597917d40e2c7550150544e095c8af17c0"
+  integrity sha512-jjdRmdLBJGF8ZXDVcaS65dfXPffz4dKU1Hmw/z7J4kF/a2mYvg92/k8LNlX5j3uGYPMXFiSl3IDVXMERTmWWsA==
   dependencies:
     "@seald-io/nedb" "^3.0.0"
     bluebird "^3.7.2"
