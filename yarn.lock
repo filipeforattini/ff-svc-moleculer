@@ -1038,10 +1038,10 @@ moleculer-swagger@^0.1.0-beta2:
   resolved "https://registry.yarnpkg.com/moleculer-swagger/-/moleculer-swagger-0.1.0-beta2.tgz#a9a3ece6b417f9ce27d222ddd116ed928e5a40f0"
   integrity sha512-OfrDTl22anU7g1KbgZFzZx7I9oH8yRHrJ6+x7PVUb/H9KlwvQ2VK2OpN+/LiR/RZkyS4BUTW4hPQ31HriVrEhA==
 
-moleculer-web@^0.10.4:
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/moleculer-web/-/moleculer-web-0.10.4.tgz#43029575b4546fd54fd888cf39a205c13cc3dab8"
-  integrity sha512-WU5jZRoH53D3Cx2eBPFPlY5+7RI4teb5nlupRZO0N9vkRblGIFm4ySahZxBN4xVXvFSF5EWt/j1BdQr5rBocVw==
+moleculer-web@^0.10.6:
+  version "0.10.6"
+  resolved "https://registry.yarnpkg.com/moleculer-web/-/moleculer-web-0.10.6.tgz#a8bc99b7f153b882018aec9fa553496a86b864f5"
+  integrity sha512-MGNIH6mXLU2Wj63bAgoVzdhMKXALp99F5UHuiBgS2ywakdWEUl/q7GlMblvscioCCkXuUWezId85J0yioYxedg==
   dependencies:
     "@fastify/busboy" "^1.0.0"
     body-parser "^1.19.0"
@@ -1052,7 +1052,7 @@ moleculer-web@^0.10.4:
     kleur "^4.1.4"
     lodash "^4.17.21"
     path-to-regexp "^3.1.0"
-    qs "^6.10.1"
+    qs "^6.11.0"
     serve-static "^1.14.1"
 
 moleculer@^0.14.21:
@@ -1354,10 +1354,10 @@ qs@6.10.3:
   dependencies:
     side-channel "^1.0.4"
 
-qs@^6.10.1:
-  version "6.11.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
-  integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
+qs@^6.11.0:
+  version "6.11.2"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.2.tgz#64bea51f12c1f5da1bc01496f48ffcff7c69d7d9"
+  integrity sha512-tDNIz22aBzCDxLtVH++VnTfzxlfeK5CbqohpSqpJgj1Wg/cQbStNAz3NuqCs5vV+pjBsK4x4pN9HlVh7rcYRiA==
   dependencies:
     side-channel "^1.0.4"
 
