@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/filipeforattini/ff-svc-moleculer#readme",
   "dependencies": {
-    "@moleculer/channels": "^0.1.2",
+    "@moleculer/channels": "^0.1.8",
     "amqplib": "^0.10.0",
     "cron": "^2.0.0",
     "dayjs": "^1.11.3",
