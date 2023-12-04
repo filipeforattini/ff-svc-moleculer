@@ -1016,10 +1016,10 @@ minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-moleculer-db-adapter-sequelize@^0.2.14:
-  version "0.2.14"
-  resolved "https://registry.yarnpkg.com/moleculer-db-adapter-sequelize/-/moleculer-db-adapter-sequelize-0.2.14.tgz#3e5ef594efa061fe7815ee9d23135df1a5bd681d"
-  integrity sha512-O2h/OUtF9JOHkwyLAzEf+BtavDxh9kf6/+cF9+NDpWdHZ/SMoEEP6W2473TvieJYqZqFC40GB3EF/pm8laz4rQ==
+moleculer-db-adapter-sequelize@^0.2.16:
+  version "0.2.16"
+  resolved "https://registry.yarnpkg.com/moleculer-db-adapter-sequelize/-/moleculer-db-adapter-sequelize-0.2.16.tgz#766dfaa6b4a87c067008021d62eeb88086ccd4cf"
+  integrity sha512-uh3Js0jqCE9iAWjRKyfFesTGCn/HDwOzN7KT6bmsyp2+WZNSzUzh7qdRwjcM+okuamYoJ7eu9TXdKEXEZBd+qg==
   dependencies:
     bluebird "^3.7.2"
 
